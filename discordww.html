@@ -1,17 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Discord Activity Test</title>
+</head>
+<body>
+<h1>Discord Rich Presence Test</h1>
+<p>Discordアクティビティ起動テスト</p>
+
 <script type="module">
 import { DiscordSDK } from "https://discord.com/sdk/discord-sdk.mjs";
 
+// あなたの Client ID
 const clientId = "1412774478970228856";
 
+// Discord SDK 初期化
 const sdk = new DiscordSDK(clientId);
+await sdk.ready(); // Discordアクティビティ環境で準備が整うのを待つ
 
-await sdk.ready(); // SDK準備完了待ち
-
+// プレゼンス更新
 await sdk.activities.updateActivity({
   details: "Testing Rich Presence",
   state: "Just hanging out",
   assets: {
-    large_image: "_yuuzi_",
+    large_image: "_yuuzi_", // Rich Presenceに登録したキー
     large_text: "Cool App"
   },
   timestamps: {
@@ -19,3 +31,7 @@ await sdk.activities.updateActivity({
   }
 });
 </script>
+</body>
+</html>
+
+
