@@ -1,14 +1,21 @@
-<script src="https://discord.com/sdk/discord-sdk.js"></script>
-<script>
+<script type="module">
+import { DiscordSDK } from "https://discord.com/sdk/discord-sdk.mjs";
+
 const clientId = "1412774478970228856";
 
-DiscordSDK.init({ clientId }).then(() => {
-    DiscordSDK.updatePresence({
-        details: "Testing Rich Presence",
-        state: "Just hanging out",
-        largeImageKey: "_yuuzi_",
-        largeImageText: "Cool App",
-        startTimestamp: Date.now()
-    });
+const sdk = new DiscordSDK(clientId);
+
+await sdk.ready(); // SDK準備完了待ち
+
+await sdk.activities.updateActivity({
+  details: "Testing Rich Presence",
+  state: "Just hanging out",
+  assets: {
+    large_image: "_yuuzi_",
+    large_text: "Cool App"
+  },
+  timestamps: {
+    start: Date.now()
+  }
 });
 </script>
