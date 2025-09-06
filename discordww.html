@@ -1,0 +1,14 @@
+<script src="https://discord.com/sdk/discord-sdk.js"></script>
+<script>
+const clientId = "1412774478970228856";
+
+DiscordSDK.init({ clientId }).then(() => {
+    DiscordSDK.updatePresence({
+        details: "Testing Rich Presence",
+        state: "Just hanging out",
+        largeImageKey: "_yuuzi_",
+        largeImageText: "Cool App",
+        startTimestamp: Date.now()
+    });
+});
+</script>
